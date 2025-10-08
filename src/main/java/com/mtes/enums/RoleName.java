@@ -1,4 +1,4 @@
-package com.mtes.mtes.enums;
+package com.mtes.enums;
 
 public enum RoleName {
     NURSE,

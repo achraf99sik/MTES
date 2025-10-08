@@ -1,4 +1,4 @@
-package com.mtes.mtes.Controllers;
+package com.mtes.Controllers;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
