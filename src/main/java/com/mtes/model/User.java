@@ -1,5 +1,6 @@
 package com.mtes.model;
 
+import com.mtes.enums.RoleName;
 import jakarta.persistence.*;
 import java.util.UUID;
 
@@ -21,12 +22,12 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    private String specialty; // For specialists only
-    private Double tariff; // For specialists only
+    private String specialty;
+    private Double tariff;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private RoleName role;
 
     public User() {}
 
@@ -41,6 +42,6 @@ public class User {
     public void setSpecialty(String specialty) { this.specialty = specialty; }
     public Double getTariff() { return tariff; }
     public void setTariff(Double tariff) { this.tariff = tariff; }
-    public Role getRole() { return role; }
-    public void setRole(Role role) { this.role = role; }
+    public RoleName getRole() { return role; }
+    public void setRole(RoleName role) { this.role = role; }
 }

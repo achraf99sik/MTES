@@ -1,16 +1,13 @@
 package com.mtes.Controllers;
 
-import com.mtes.enums.RoleName;
-import com.mtes.model.Role;
 import com.mtes.utils.JPAUtil;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 
@@ -26,13 +23,14 @@ public class LoginController extends HttpServlet {
 
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
         System.out.println(email);
+        System.out.println(hashed);
+
+        resp.sendRedirect("dashboard");
 
         EntityManager em = JPAUtil.getEntityManager();
         System.out.println("Tables should now be created in your PostgreSQL database!");
-        em.close();
-        JPAUtil.close();
-
 
 
         //if ("admin@example.com".equals(email)) {

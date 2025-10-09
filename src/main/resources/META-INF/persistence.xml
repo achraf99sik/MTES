@@ -4,7 +4,6 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
     <persistence-unit name="MTES_PU">
-        <class>com.mtes.model.Role</class>
         <class>com.mtes.model.User</class>
         <class>com.mtes.model.Patient</class>
         <class>com.mtes.model.VitalSigns</class>
