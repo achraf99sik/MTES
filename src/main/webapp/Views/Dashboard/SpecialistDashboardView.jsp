@@ -1,4 +1,3 @@
-
 <%@ include file="../Includes/header.jsp" %>
 <body class="bg-slate-50 dark:bg-slate-900 transition-colors duration-300 min-h-screen flex flex-col">
 
@@ -19,8 +18,8 @@
 
             <!-- User Info and Logout -->
             <div class="flex items-center gap-4">
-                <span class="text-slate-600 dark:text-slate-300 text-sm font-medium">Welcome, Dr. Chen (Cardiologist)</span>
-                <a href="/logout" class="btn-secondary px-4 py-1.5 rounded-lg font-semibold">
+                <span class="text-slate-600 dark:text-slate-300 text-sm font-medium">Welcome, Dr. ${user.fullName} (${user.specialty})</span>
+                <a href="logout" class="btn-secondary px-4 py-1.5 rounded-lg font-semibold">
                     Logout
                 </a>
             </div>

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
     <title>${title}</title>
@@ -32,13 +33,16 @@
             <p class="text-slate-600 dark:text-slate-400">Sign in to access your healthcare dashboard</p>
         </div>
 
+        <c:if test="${not empty error}">
+            <p class="text-red-600">${error}</p>
+        </c:if>
         <form method="post" action="login" id="loginForm" class="space-y-4">
             <div class="space-y-2">
                 <label for="email" class="block text-sm font-medium text-slate-900 dark:text-slate-50">
                     Email
                 </label>
                 <input id="email" name="email" type="email" placeholder="doctor@hospital.com" required
-                       class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900 dark:focus:ring-sky-500 focus:border-transparent dark:bg-slate-700 dark:text-slate-50 dark:placeholder-slate-400"/>
+                       class="w-full ${error == 'User not found!' ? 'border border-red-600': 'border border-slate-300'} px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900 dark:focus:ring-sky-500 focus:border-transparent dark:bg-slate-700 dark:text-slate-50 dark:placeholder-slate-400"/>
             </div>
 
             <div class="space-y-2">
@@ -51,15 +55,7 @@
                     </a>
                 </div>
                 <input name="password" id="password" type="password" placeholder="Enter your password" required
-                       class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900 dark:focus:ring-sky-500 focus:border-transparent dark:bg-slate-700 dark:text-slate-50 dark:placeholder-slate-400"/>
-            </div>
-
-            <div class="flex items-center space-x-2">
-                <input type="checkbox" id="remember"
-                       class="checkbox w-4 h-4 border-slate-300 dark:border-slate-600 rounded cursor-pointer checked:bg-slate-900 dark:checked:bg-sky-500 focus:ring-slate-900 dark:focus:ring-sky-500"/>
-                <label for="remember" class="text-sm text-slate-900 dark:text-slate-50 cursor-pointer select-none">
-                    Remember me for 30 days
-                </label>
+                       class="w-full px-3 py-2 border ${not empty error ? 'border-red-600': 'border-slate-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900 dark:focus:ring-sky-500 focus:border-transparent dark:bg-slate-700 dark:text-slate-50 dark:placeholder-slate-400"/>
             </div>
 
             <button type="submit" class="bg-black/50 w-full py-2.5 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 text-white

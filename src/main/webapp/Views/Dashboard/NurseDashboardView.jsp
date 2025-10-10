@@ -19,7 +19,7 @@
 
             <!-- User Info and Logout -->
             <div class="flex items-center gap-4">
-                <span class="text-slate-600 dark:text-slate-300 text-sm font-medium">Welcome, Nurse Emily</span>
+                <span class="text-slate-600 dark:text-slate-300 text-sm font-medium">Welcome, Nurse ${user.fullName}</span>
                 <a href="logout" class="btn-secondary px-4 py-1.5 rounded-lg font-semibold">
                     Logout
                 </a>

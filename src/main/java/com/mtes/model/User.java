@@ -30,6 +30,34 @@ public class User {
     private RoleName role;
 
     public User() {}
+    // login
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+    // nurse
+    public User(String fullName ,String email, String password, RoleName role){
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+    // Genenralist
+    public User(String fullName,String email, String password, Double tariff, RoleName role) {
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+        this.tariff = tariff;
+        this.role = role;
+    }
+    // Specialist
+    public User(String fullName,String email, String password, String specialty, RoleName role) {
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+        this.specialty = specialty;
+        this.role = role;
+    }
 
     public UUID getId() { return id; }
     public String getFullName() { return fullName; }

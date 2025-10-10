@@ -1,7 +1,9 @@
 package com.mtes.Controllers;
 
+import com.mtes.model.User;
 import com.mtes.utils.JPAUtil;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -24,20 +26,25 @@ public class LoginController extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
-        System.out.println(email);
-        System.out.println(hashed);
 
-        resp.sendRedirect("dashboard");
+        try (EntityManager em = JPAUtil.getEntityManager()) {
+            User user = null;
+            user = em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
 
-        EntityManager em = JPAUtil.getEntityManager();
-        System.out.println("Tables should now be created in your PostgreSQL database!");
 
-
-        //if ("admin@example.com".equals(email)) {
-        //  req.setAttribute("username", email);
-        //      req.getRequestDispatcher("/views/dashboard.jsp").forward(req, resp);
-        //} else {
-        //    resp.sendRedirect("Views/error.jsp");
-        //}
+            if (BCrypt.checkpw(password, user.getPassword())) {
+                System.out.println("Login successful!");
+                req.getSession().setAttribute("user", user);
+                resp.sendRedirect("dashboard");
+            } else {
+                req.setAttribute("error", "Invalid password");
+                req.getRequestDispatcher("Views/LoginView.jsp").forward(req, resp);
+            }
+        } catch (NoResultException e) {
+            req.setAttribute("error", "User not found!");
+            req.getRequestDispatcher("Views/LoginView.jsp").forward(req, resp);
+        }
     }
 }

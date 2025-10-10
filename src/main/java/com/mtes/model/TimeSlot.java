@@ -23,7 +23,6 @@ public class TimeSlot {
 
     public TimeSlot() {}
 
-    // Getters & Setters
     public UUID getId() { return id; }
     public LocalDateTime getStartTime() { return startTime; }
     public void setStartTime(LocalDateTime startTime) { this.startTime = startTime; }
