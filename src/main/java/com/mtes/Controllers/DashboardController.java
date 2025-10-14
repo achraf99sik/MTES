@@ -1,5 +1,6 @@
 package com.mtes.Controllers;
 
+import com.mtes.model.Patient;
 import com.mtes.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,7 +19,12 @@ public class DashboardController extends HttpServlet {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("user") != null) {
             User user = (User) session.getAttribute("user");
+            Patient patient = (Patient) session.getAttribute("patient");
             request.setAttribute("user", user);
+            if(patient != null) {
+                System.out.println(patient.toString());
+                request.setAttribute("patient", patient);
+            }
             switch (user.getRole()) {
                 case GENERALIST -> request.getRequestDispatcher("Views/Dashboard/GPDashboardView.jsp").forward(request, response);
                 case NURSE -> request.getRequestDispatcher("Views/Dashboard/NurseDashboardView.jsp").forward(request, response);

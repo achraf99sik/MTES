@@ -25,7 +25,6 @@ public class LoginController extends HttpServlet {
 
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
 
         try (EntityManager em = JPAUtil.getEntityManager()) {
             User user = null;
