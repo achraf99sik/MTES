@@ -44,4 +44,20 @@ public class Patient {
     public void setMedicalHistory(String medicalHistory) { this.medicalHistory = medicalHistory; }
     public String getAllergies() { return allergies; }
     public void setAllergies(String allergies) { this.allergies = allergies; }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                ", socialSecurityNumber='" + socialSecurityNumber + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", insurance='" + insurance + '\'' +
+                ", medicalHistory='" + medicalHistory + '\'' +
+                ", allergies='" + allergies + '\'' +
+                '}';
+    }
 }

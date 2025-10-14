@@ -21,6 +21,17 @@ public class VitalSigns {
     private Double height;
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    public VitalSigns(String bloodPressure, Integer heartRate, Double temperature, Integer respiratoryRate, Double weight, Double height, LocalDateTime createdAt, Patient patient) {
+        this.bloodPressure = bloodPressure;
+        this.heartRate = heartRate;
+        this.temperature = temperature;
+        this.respiratoryRate = respiratoryRate;
+        this.weight = weight;
+        this.height = height;
+        this.createdAt = createdAt;
+        this.patient = patient;
+    }
+
     @ManyToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;
