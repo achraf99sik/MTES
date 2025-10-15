@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <head>
-    <title>Specialist Dashboard - MediCare Portal</title>
+    <title>${title} - MediCare Portal</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         @theme inline {

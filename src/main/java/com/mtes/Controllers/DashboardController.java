@@ -15,7 +15,6 @@ import java.io.IOException;
 public class DashboardController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        request.setAttribute("title", "Dashboard");
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("user") != null) {
             User user = (User) session.getAttribute("user");
@@ -25,9 +24,18 @@ public class DashboardController extends HttpServlet {
                 request.setAttribute("patient", patient);
             }
             switch (user.getRole()) {
-                case GENERALIST -> request.getRequestDispatcher("Views/Dashboard/GPDashboardView.jsp").forward(request, response);
-                case NURSE -> request.getRequestDispatcher("Views/Dashboard/NurseDashboardView.jsp").forward(request, response);
-                case SPECIALIST -> request.getRequestDispatcher("Views/Dashboard/SpecialistDashboardView.jsp").forward(request, response);
+                case GENERALIST -> {
+                    request.setAttribute("title", "Generalist Dashboard");
+                    request.getRequestDispatcher("Views/Dashboard/GPDashboardView.jsp").forward(request, response);
+                }
+                case NURSE -> {
+                    request.setAttribute("title", "Nurse Dashboard");
+                    request.getRequestDispatcher("Views/Dashboard/NurseDashboardView.jsp").forward(request, response);
+                }
+                case SPECIALIST -> {
+                    request.setAttribute("title", "Specialist Dashboard");
+                    request.getRequestDispatcher("Views/Dashboard/SpecialistDashboardView.jsp").forward(request, response);
+                }
             }
         } else {
             response.sendRedirect("login");

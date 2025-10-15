@@ -15,7 +15,7 @@
                     </svg>
                 </div>
                 <span class="text-xl font-bold text-slate-900 dark:text-white transition-colors duration-300">MediCare Portal</span>
-                <span class="text-xl font-bold text-slate-500 dark:text-slate-400 transition-colors duration-300 ml-4">/ GP Dashboard</span>
+                <span class="text-xl font-bold text-slate-500 dark:text-slate-400 transition-colors duration-300 ml-4">/ ${title}</span>
             </div>
 
             <!-- User Info and Logout -->

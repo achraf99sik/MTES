@@ -12,7 +12,7 @@
                     <!-- SVG removed -->
                 </div>
                 <span>MediCare Portal</span>
-                <span>/ Nurse Dashboard</span>
+                <span>/ ${title}</span>
             </div>
 
             <!-- User Info and Logout -->
