@@ -105,8 +105,12 @@
                         <input type="number" step="0.1" id="temperature" name="temperature" required>
                     </div>
                     <div>
-                        <label for="bloodPressure">Blood Pressure (mmHg):</label>
-                        <input type="text" id="bloodPressure" name="bloodPressure" placeholder="e.g., 120/80" required>
+                        <label for="systolic">Systolic Blood Pressure (mmHg):</label>
+                        <input type="number" min="50" max="210" id="systolic" name="systolic" placeholder="e.g., 120" required>
+                    </div>
+                    <div>
+                        <label for="diastolic">Diastolic Blood Pressure (mmHg):</label>
+                        <input type="number" min="35" max="120" id="diastolic" name="diastolic" placeholder="e.g., 80" required>
                     </div>
                     <div>
                         <label for="heartRate">Heart Rate (bpm):</label>

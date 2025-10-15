@@ -23,6 +23,11 @@ public class WaitingQueue {
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
+    public WaitingQueue(LocalDateTime arrivalTime, Patient patient) {
+        this.arrivalTime = arrivalTime;
+        this.patient = patient;
+    }
+
     public WaitingQueue() {}
 
     public UUID getId() { return id; }

@@ -22,7 +22,6 @@ public class DashboardController extends HttpServlet {
             Patient patient = (Patient) session.getAttribute("patient");
             request.setAttribute("user", user);
             if(patient != null) {
-                System.out.println(patient.toString());
                 request.setAttribute("patient", patient);
             }
             switch (user.getRole()) {
