@@ -23,8 +23,7 @@ public class WaitingQueue {
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
-    public WaitingQueue(LocalDateTime arrivalTime, Patient patient) {
-        this.arrivalTime = arrivalTime;
+    public WaitingQueue(Patient patient) {
         this.patient = patient;
     }
 

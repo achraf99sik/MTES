@@ -40,7 +40,7 @@ public class EnterVitalsController extends HttpServlet {
             }
 
             VitalSigns vitals = new VitalSigns(bp, hr, temp, rr, weight, height, LocalDateTime.now(), patient);
-            WaitingQueue waitingQueue = new WaitingQueue(LocalDateTime.now(), patient);
+            WaitingQueue waitingQueue = new WaitingQueue(patient);
             em.persist(vitals);
             em.persist(waitingQueue);
 
