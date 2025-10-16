@@ -34,7 +34,6 @@ public class LoginController extends HttpServlet {
 
 
             if (BCrypt.checkpw(password, user.getPassword())) {
-                System.out.println("Login successful!");
                 req.getSession().setAttribute("user", user);
                 resp.sendRedirect("dashboard");
             } else {
