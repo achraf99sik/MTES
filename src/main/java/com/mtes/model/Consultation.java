@@ -24,6 +24,15 @@ public class Consultation {
 
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    public Consultation(String reason, String observations, String diagnosis, String treatment, Patient patient, User generalist) {
+        this.reason = reason;
+        this.observations = observations;
+        this.diagnosis = diagnosis;
+        this.treatment = treatment;
+        this.patient = patient;
+        this.generalist = generalist;
+    }
+
     @ManyToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;
@@ -50,4 +59,19 @@ public class Consultation {
     public void setPatient(Patient patient) { this.patient = patient; }
     public User getGeneralist() { return generalist; }
     public void setGeneralist(User generalist) { this.generalist = generalist; }
+
+    @Override
+    public String toString() {
+        return "Consultation{" +
+                "id=" + id +
+                ", reason='" + reason + '\'' +
+                ", observations='" + observations + '\'' +
+                ", diagnosis='" + diagnosis + '\'' +
+                ", treatment='" + treatment + '\'' +
+                ", status=" + status +
+                ", createdAt=" + createdAt +
+                ", patient=" + patient +
+                ", generalist=" + generalist +
+                '}';
+    }
 }

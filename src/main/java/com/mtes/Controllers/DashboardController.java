@@ -33,6 +33,14 @@ public class DashboardController extends HttpServlet {
             List<Consultation> consultations = null;
             switch (user.getRole()) {
                 case GENERALIST -> {
+                    try (EntityManager em = JPAUtil.getEntityManager()) {
+                        queues = em.createQuery("SELECT w FROM WaitingQueue w JOIN FETCH w.patient p LEFT JOIN FETCH p.vitalSigns WHERE w.status = 'WAITING'",WaitingQueue.class).getResultList();
+                        consultations = em.createQuery("SELECT c FROM Consultation c JOIN FETCH c.patient WHERE c.generalist = :user",Consultation.class).setParameter("user", user).getResultList();
+                    }catch (EntityNotFoundException e){
+                        System.out.println(e.getMessage());
+                    }
+                    request.setAttribute("queues", queues);
+                    request.setAttribute("consultations", consultations);
                     request.setAttribute("title", "Generalist Dashboard");
                     request.getRequestDispatcher("Views/Dashboard/GPDashboardView.jsp").forward(request, response);
                 }
