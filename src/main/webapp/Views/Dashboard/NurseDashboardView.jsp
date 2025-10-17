@@ -61,11 +61,11 @@
                 <h3 class="text-xl font-semibold text-slate-900 dark:text-white group-hover:text-sky-500">Admit Patient</h3>
                 <p class="text-slate-600 dark:text-slate-300 text-sm">Search for existing or register new patients.</p>
             </a>
-            <a href="#" class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 shadow border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center gap-3 group">
+            <a href="#waitingQueue" class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 shadow border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center gap-3 group">
                 <h3 class="text-xl font-semibold text-slate-900 dark:text-white group-hover:text-sky-500">View Today's Patients</h3>
                 <p class="text-slate-600 dark:text-slate-300 text-sm">See all scheduled and waiting patients.</p>
             </a>
-            <a href="#" class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 shadow border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center gap-3 group">
+            <a href="#newPatientForm" class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 shadow border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center gap-3 group">
                 <h3 class="text-xl font-semibold text-slate-900 dark:text-white group-hover:text-sky-500">Manage Vital Signs</h3>
                 <p class="text-slate-600 dark:text-slate-300 text-sm">Update patient vital statistics.</p>
             </a>
@@ -150,7 +150,7 @@
         </div>
 
         <!-- Waiting Queue -->
-        <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow transition-colors duration-300">
+        <div id="waitingQueue" class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow transition-colors duration-300">
             <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Waiting Queue</h2>
             <ul class="divide-y divide-slate-200 dark:divide-slate-700">
                 <c:forEach items="${queues}" var="queue">

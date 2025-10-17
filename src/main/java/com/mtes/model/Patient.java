@@ -2,6 +2,7 @@ package com.mtes.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -22,6 +23,12 @@ public class Patient {
     private String insurance;
     private String medicalHistory;
     private String allergies;
+    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY)
+    private List<VitalSigns> vitalSigns;
+
+    public List<VitalSigns> getVitalSigns() {
+        return vitalSigns;
+    }
 
     public Patient() {}
 
