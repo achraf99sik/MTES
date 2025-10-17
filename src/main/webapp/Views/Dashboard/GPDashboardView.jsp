@@ -181,55 +181,47 @@
                             <span class="font-semibold text-slate-900 dark:text-white">Patient: ${consultation.patient.firstName} ${consultation.patient.lastName}</span>
                             <span class="text-sm text-slate-600 dark:text-slate-400">Reason: ${consultation.reason} • Date: ${consultation.createdAt}</span>
                         </div>
-                        <a href="consultation-details?id=${consultation.id}" class="text-sky-600 dark:text-sky-400 hover:underline text-sm">View Details</a>
+                        <a class="text-white cursor-pointer" onclick="viewDetails('${consultation.id}')">View Details</a>
                     </li>
-                    <div id="${consultation.id}" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+                    <div id="${consultation.id}"
+                         class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
 
                         <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg w-full max-w-lg p-6 relative">
-
+                            <!-- Close Button -->
                             <button onclick="viewDetails('${consultation.id}')"
-                                    class="absolute top-3 right-3 cursor-pointer text-slate-500 hover:text-slate-800 dark:hover:text-white text-2xl font-bold">
+                                    class="absolute top-3 right-3 text-slate-600 hover:text-slate-900 dark:hover:text-white font-bold text-2xl">
                                 ×
                             </button>
 
-                            <!-- Patient Header -->
-                            <h2 class="text-2xl font-semibold mb-2 text-slate-900 dark:text-white">
-                                    ${consultation.patient.firstName} ${consultation.patient.lastName}
+                            <!-- Header -->
+                            <h2 class="text-2xl font-semibold mb-1 text-slate-900 dark:text-white">
+                                Consultation Details
                             </h2>
                             <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">
-                                SSN: ${consultation.patient.socialSecurityNumber} • Arrival: ${consultation.arrivalTime}
+                                Created: ${consultation.createdAt} • Status:
+                                <span class="font-medium">${consultation.status}</span>
                             </p>
 
-                            <!-- Patient Information -->
-                            <div class="border-t border-slate-300 dark:border-slate-700 pt-3 mb-4">
-                                <h3 class="text-lg font-medium text-slate-800 dark:text-slate-100 mb-2">Patient Information</h3>
-                                <ul class="text-slate-700 dark:text-slate-300 space-y-1 text-sm">
-                                    <li><strong>Birth Date:</strong> ${queue.patient.birthDate}</li>
-                                    <li><strong>Phone:</strong> ${queue.patient.phone}</li>
-                                    <li><strong>Address:</strong> ${queue.patient.address}</li>
-                                    <li><strong>Insurance:</strong> ${queue.patient.insurance}</li>
-                                    <li><strong>Allergies:</strong> ${queue.patient.allergies}</li>
-                                    <li><strong>Medical History:</strong> ${queue.patient.medicalHistory}</li>
-                                </ul>
+                            <!-- Consultation Information -->
+                            <div class="border-t border-slate-300 dark:border-slate-700 pt-3 space-y-2 text-slate-700 dark:text-slate-300">
+                                <p><strong>Reason:</strong> ${consultation.reason}</p>
+                                <p><strong>Observations:</strong> ${consultation.observations}</p>
+                                <p><strong>Diagnosis:</strong> ${consultation.diagnosis}</p>
+                                <p><strong>Treatment:</strong> ${consultation.treatment}</p>
                             </div>
 
-                            <!-- Vital Signs -->
-                            <div class="border-t border-slate-300 dark:border-slate-700 pt-3">
-                                <h3 class="text-lg font-medium text-slate-800 dark:text-slate-100 mb-2">Recent Vital Signs</h3>
-
-                                <c:forEach items="${queue.patient.vitalSigns}" var="vitals">
-                                    <div class="mb-3 text-white p-3 rounded-md bg-slate-50 dark:bg-slate-900/40">
-                                        <p><strong>Blood Pressure:</strong> ${vitals.bloodPressure} mmHg</p>
-                                        <p><strong>Heart Rate:</strong> ${vitals.heartRate} bpm</p>
-                                        <p><strong>Temperature:</strong> ${vitals.temperature} °C</p>
-                                        <p><strong>Respiratory Rate:</strong> ${vitals.respiratoryRate} bpm</p>
-                                        <p><strong>Weight:</strong> ${vitals.weight} kg</p>
-                                        <p><strong>Height:</strong> ${vitals.height} cm</p>
-                                        <p class="text-xs text-slate-500 mt-1">
-                                            Recorded at: ${vitals.createdAt}
-                                        </p>
-                                    </div>
-                                </c:forEach>
+                            <!-- Patient Info -->
+                            <div class="border-t border-slate-300 dark:border-slate-700 pt-4 mt-4">
+                                <h3 class="text-lg font-medium text-slate-800 dark:text-slate-100 mb-2">
+                                    Patient Information
+                                </h3>
+                                <ul class="text-sm text-slate-700 dark:text-slate-300 space-y-1">
+                                    <li><strong>Name:</strong> ${consultation.patient.firstName} ${consultation.patient.lastName}</li>
+                                    <li><strong>SSN:</strong> ${consultation.patient.socialSecurityNumber}</li>
+                                    <li><strong>Birth Date:</strong> ${consultation.patient.birthDate}</li>
+                                    <li><strong>Phone:</strong> ${consultation.patient.phone}</li>
+                                    <li><strong>Address:</strong> ${consultation.patient.address}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
