@@ -15,7 +15,7 @@ MTES is a web-based application designed to streamline patient management and me
 ## Technologies Used
 
 *   **Backend:**
-    *   Java 11
+    *   Java 17
     *   Jakarta EE (Servlet, JSP, JSTL)
     *   JPA (Jakarta Persistence API)
     *   Hibernate (JPA implementation)
@@ -32,7 +32,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-*   Java JDK 11 or higher
+*   Java JDK 17 or higher
 *   Apache Maven
 *   PostgreSQL database server
 *   A servlet container like Apache Tomcat
@@ -41,7 +41,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1.  **Clone the repository:**
     ```sh
-    git clone https://github.com/your-username/MTES.git
+    git clone https://github.com/achraf99sik/MTES.git
     cd MTES
     ```
 2.  **Database Setup:**
