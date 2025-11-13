@@ -1,4 +1,4 @@
-# MTES - Medical Triage & Expertise System
+# MTES - Medical tele-expertise system
 
 MTES is a web-based application designed to streamline patient management and medical consultations within a healthcare facility. It provides a platform for different medical professionals (Nurses, General Practitioners, and Specialists) to collaborate and manage patient care efficiently.
 
